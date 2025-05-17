@@ -81,27 +81,74 @@ body {
         }
     }
 
-  /* 大会ステージ風背景 */
+/* 全体背景（落ち着いたブルーグラデーション） */
 body {
-  margin: 0;                  /* ページ端のデフォルトの余白を削除 */
-  padding: 0;                 /* 内側の余白もなしにして、全面を背景に使えるようにする */
-  background: radial-gradient(circle at center, #333 0%, #111 50%, #000 100%); /* 中心から外側に向かって暗くなる円形グラデーションを設定（ステージの照明を再現） */
-  color: white;              /* 全体のテキストカラーを白に設定（暗い背景と対比） */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 読みやすく近代的なフォントを指定 */
-  min-height: 100vh;          /* 画面全体の高さを確保（スクロール防止） */
-  display: flex;               /* フレックスボックスでレイアウトを制御 */
-  flex-direction: column;      /* 子要素を縦方向に配置 */
-  align-items: center;        /* 水平方向に中央揃え */
-  justify-content: start;     /* 縦方向に上から並べる */
+  margin: 0; /* デフォルト余白を除去 */
+  padding: 0; /* 内側の余白も除去 */
+  background: linear-gradient(to bottom, #1e3c72 0%, #2a5298 100%); /* 爽やかで深みのある青グラデーション */
+  color: white; /* テキスト色を白に設定（背景と対比） */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 読みやすく近代的なフォント */
+  min-height: 100vh; /* 画面全体の高さをカバー */
+  display: flex; /* フレックスボックスで中央揃え */
+  flex-direction: column; /* 子要素を縦に並べる */
+  align-items: center; /* 横方向中央揃え */
+  justify-content: flex-start; /* 縦方向は上揃え */
 }
 
-/* 中央の問題パネルなどに枠や光をつける */
+/* 問題パネル（少しだけ強調、発光なし） */
 .panel {
-  background-color: rgba(0, 0, 0, 0.6);           /* 半透明の黒背景（奥行き感の演出） */
-  border: 2px solid #00ffff;                      /* シアン色の枠線（目立たせる効果） */
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* 外側に光るような青の影を追加（ネオン風演出） */
-  border-radius: 12px;                              /* パネルの角を丸めることで柔らかい印象に */
-  padding: 20px;                                   /* パネル内側の余白を設定（文字が枠にくっつかないように） */
-  margin-top: 40px;                                 /* パネルの上にスペースを空けて、少し下に配置 */
+  background-color: rgba(0, 0, 0, 0.4); /* 軽く透ける黒背景で落ち着き */
+  border: 2px solid #66ccff; /* 水色の控えめな縁取り */
+  border-radius: 12px; /* 丸みをつけてやさしい印象に */
+  box-shadow: 0 0 10px rgba(102, 204, 255, 0.3); /* 控えめな光の影 */
+  padding: 20px; /* 内側余白 */
+  margin-top: 40px; /* 上との間隔 */
 }
+
+/* ※不気味に感じる光線演出は削除する */
+/* 不使用のため削除 */
+
+
+#countdown-overlay {
+  position: fixed; /* 画面に固定配置 */
+  top: 0; left: 0;
+  width: 100vw; height: 100vh; /* 全画面 */
+  background-color: rgba(0, 0, 0, 0.8); /* 黒の半透明背景 */
+  display: none; /* 初期状態は非表示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* 最前面 */
+  pointer-events: none;
+}
+
+#countdown-text {
+  font-size: 6rem;
+  color: white;
+  animation: countdownPop 1s ease;
+}
+
+@keyframes countdownPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#countdown-text {
+  animation: countdownPop 1s ease;
+  font-size: 64px;
+  color: white;
+  text-align: center;
+}
+
+
+
 

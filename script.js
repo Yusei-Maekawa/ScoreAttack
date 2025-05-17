@@ -147,22 +147,50 @@
 
     // +○○点が画面に浮かんで、スコアに飛んでいく演出
     function createFlyingScore(scoreGain) {
-    const fly = document.createElement('div'); // 新しい要素を作る
-    fly.className = 'score-fly';               // CSSクラスを適用
-    fly.textContent = `+${formatWithCommas(scoreGain)}点`; // 加点内容
+      const fly = document.createElement('div'); // 新しい要素を作る
+      fly.className = 'score-fly';               // CSSクラスを適用
+      fly.textContent = `+${formatWithCommas(scoreGain)}点`; // 加点内容
 
-    // 表示位置（中央に表示、またはボタン付近などに調整可能）
-    fly.style.right = '40px';   // 右端からの位置
-    fly.style.top = '70px';     // 上端からの位置
-    fly.style.left = 'auto';    // 左端は自動調整
-    fly.style.transform = 'translateY(0)';  // 初期位置
+      // 表示位置（中央に表示、またはボタン付近などに調整可能）
+      fly.style.right = '40px';   // 右端からの位置
+      fly.style.top = '70px';     // 上端からの位置
+      fly.style.left = 'auto';    // 左端は自動調整
+      fly.style.transform = 'translateY(0)';  // 初期位置
 
 
-    document.body.appendChild(fly); // 画面に追加
+      document.body.appendChild(fly); // 画面に追加
 
-    // アニメーションが終わったら自動で削除
-    setTimeout(() => {
-        document.body.removeChild(fly);
-    }, 1000); // CSSアニメーション時間と揃える
+      // アニメーションが終わったら自動で削除
+      setTimeout(() => {
+          document.body.removeChild(fly);
+      }, 1000); // CSSアニメーション時間と揃える
     }
+  // スタートボタンを押したときの処理
+    function startCountdown(callback) {
+    const overlay = document.getElementById('countdown-overlay'); // カウントダウンオーバーレイ
+    const text = document.getElementById('countdown-text'); // カウントダウンテキスト
+    const countdown = ['3', '2', '1', 'Start!'];  // カウントダウンの内容
+    let index = 0;
+
+    overlay.style.display = 'flex'; // 表示開始
+
+     function showNext() {
+      if (index >= countdown.length) {
+        overlay.style.display = 'none'; // 全て表示後に非表示
+        if (callback) callback(); // コールバック（ゲーム開始）呼び出し
+        return;
+      }
+
+      text.textContent = countdown[index];
+      text.style.animation = 'none'; // アニメーションリセット
+      text.offsetHeight; // DOMリフローで強制再描画
+      text.style.animation='countdownPop 1s ease';
+
+      index++;
+      setTimeout(showNext, 1000); // 1秒ごとに再実行
+    }
+
+    showNext(); // 最初の呼び出し
+  }
+
  

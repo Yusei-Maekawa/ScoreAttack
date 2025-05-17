@@ -21,10 +21,12 @@
     <button onclick="startQuestion()">問題スタート</button> <!-- 実際の問題開始ボタン -->
     <button onclick="simulateCorrect()">正解テスト</button> <!-- 正解アニメーション確認用 -->
     <button onclick="simulateWrong()">不正解テスト</button> <!-- 不正解アニメーション確認用 -->
+    <button onclick="startCountdown(startQuestion)">ゲーム開始</button>
+
   </div>
 
   <!-- 合計スコア表示 -->
-    <div id="score-display" style="position: fixed; top: 20px; right: 30px; font-size: 2rem; color: navy;">
+    <div id="score-display" style="position: fixed; top: 20px; right: 30px; font-size: 2rem; color: white;">
     スコア: 0点
     </div>
 
@@ -36,7 +38,17 @@
   <!-- 効果音（正解と不正解） -->
   <audio id="correct-sound" src="sounds/クイズ正解5.mp3" preload="auto"></audio> <!-- 正解音声読み込み -->
   <audio id="wrong-sound" src="sounds/クイズ不正解2.mp3" preload="auto"></audio> <!-- 不正解音声読み込み -->
- 
+  
+  <!-- スポットライト用の装飾要素 -->
+  <div class="spotlight"></div>
+  <div class="spotlight left"></div>
+  <div class="spotlight right"></div>
+
+  <!-- カウントダウン -->
+<div id="countdown-overlay">
+  <div id="countdown-text">3</div>
+</div>
+
 
   <script src = "script.js" ></script> 
 
