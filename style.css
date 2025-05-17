@@ -1,0 +1,82 @@
+body {
+      font-family: sans-serif; /* フォントはサンセリフ体（ゴシック系） */
+      text-align: center; /* テキストを中央揃え */
+      padding-top: 100px; /* 上部に余白を追加 */
+    }
+
+    button {
+      font-size: 1.2rem; /* ボタン文字サイズを拡大 */
+      padding: 10px 20px; /* ボタン内の余白を設定 */
+      margin: 20px; /* ボタン外側の余白を設定 */
+    }
+
+    #result-overlay {
+      position: fixed; /* 画面全体に固定配置 */
+      top: 0; left: 0; /* 左上からスタート */
+      width: 100vw; height: 100vh; /* 全画面サイズ */
+      background-color: rgba(0,0,0,0.3); /* 半透明黒背景 */
+      display: flex; flex-direction: column; /* 縦並びフレックス配置 */
+      align-items: center; justify-content: center; /* 中央に配置 */
+      color: white; /* テキストは白色 */
+      opacity: 0; /* 初期状態は非表示 */
+      pointer-events: none; /* オーバーレイはクリックを通す */
+      transition: opacity 0.3s ease; /* 表示・非表示のアニメーション */
+      z-index: 9999; /* 他の要素より前面に表示 */
+    }
+
+    #result-overlay.correct svg circle {
+      stroke: limegreen; /* 正解の○は緑色 */
+    }
+
+    #result-overlay.wrong svg line {
+      stroke: red; /* 不正解の×は赤色 */
+    }
+
+    #result-symbol {
+      width: 200px; height: 200px; /* ○×の表示サイズを指定 */
+    }
+
+    .draw {
+      stroke-dasharray: 1000; /* 線の長さを仮に1000pxと設定 */
+      stroke-dashoffset: 1000; /* 描かれてない状態からスタート */
+      animation: drawLine 1.5s ease forwards; /* アニメーションで線を描く */
+    }
+
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; } /* アニメーション終了時は完全に描画された状態 */
+    }
+
+    #score-change {
+      font-size: 2.5rem; /* 加点表示のサイズ */
+      margin-top: 1rem; /* 上部に少し余白 */
+      animation: pop 0.5s ease; /* ポップするアニメーション */
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; } /* 表示前：小さくて透明 */
+      50% { transform: scale(1.2); opacity: 1; } /* 拡大しつつ表示 */
+      100% { transform: scale(1); opacity: 1; } /* 元の大きさで表示完了 */
+    }
+
+    /* フライング加点演出（元々のスコアとは別の位置から動く） */
+    .score-fly {
+    position: fixed;
+    font-size: 2rem;
+    font-weight: bold;
+    color: gold;
+    animation: flyToScore 1s ease forwards;
+    pointer-events: none;
+    z-index: 9999;
+    }
+
+    /* 上に向かって移動しながらフェードアウト */
+    @keyframes flyToScore {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+    }
