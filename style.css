@@ -80,3 +80,28 @@ body {
             opacity: 0;
         }
     }
+
+  /* 大会ステージ風背景 */
+body {
+  margin: 0;                  /* ページ端のデフォルトの余白を削除 */
+  padding: 0;                 /* 内側の余白もなしにして、全面を背景に使えるようにする */
+  background: radial-gradient(circle at center, #333 0%, #111 50%, #000 100%); /* 中心から外側に向かって暗くなる円形グラデーションを設定（ステージの照明を再現） */
+  color: white;              /* 全体のテキストカラーを白に設定（暗い背景と対比） */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 読みやすく近代的なフォントを指定 */
+  min-height: 100vh;          /* 画面全体の高さを確保（スクロール防止） */
+  display: flex;               /* フレックスボックスでレイアウトを制御 */
+  flex-direction: column;      /* 子要素を縦方向に配置 */
+  align-items: center;        /* 水平方向に中央揃え */
+  justify-content: start;     /* 縦方向に上から並べる */
+}
+
+/* 中央の問題パネルなどに枠や光をつける */
+.panel {
+  background-color: rgba(0, 0, 0, 0.6);           /* 半透明の黒背景（奥行き感の演出） */
+  border: 2px solid #00ffff;                      /* シアン色の枠線（目立たせる効果） */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* 外側に光るような青の影を追加（ネオン風演出） */
+  border-radius: 12px;                              /* パネルの角を丸めることで柔らかい印象に */
+  padding: 20px;                                   /* パネル内側の余白を設定（文字が枠にくっつかないように） */
+  margin-top: 40px;                                 /* パネルの上にスペースを空けて、少し下に配置 */
+}
+
