@@ -6,7 +6,7 @@
 
   <meta charset="UTF-8"> <!-- 文字コードをUTF-8に指定（日本語対応） -->
 
-  <title>○×スコアアタック</title> <!-- ブラウザのタブに表示されるページタイトル -->
+  <title>4択スコアアタック</title> <!-- ブラウザのタブに表示されるページタイトル -->
 
    <!-- 外部CSSファイルを読み込む -->
     <link rel="stylesheet" href="style.css"> <!-- スタイルシートの読み込み -->
@@ -15,15 +15,25 @@
 
 <body> <!-- ページの本体開始 -->
 
-  <h1>○×スコアアタック</h1> <!-- 見出し表示 -->
+  <h1>4択スコアアタック</h1> <!-- 見出し表示 -->
 
   <div> <!-- ボタン配置エリア -->
-    <button onclick="startQuestion()">問題スタート</button> <!-- 実際の問題開始ボタン -->
-    <button onclick="simulateCorrect()">正解テスト</button> <!-- 正解アニメーション確認用 -->
-    <button onclick="simulateWrong()">不正解テスト</button> <!-- 不正解アニメーション確認用 -->
-    <button onclick="startCountdown(startQuestion)">ゲーム開始</button>
-
+    <label for="category-select">カテゴリ選択：</label>
+    <select id="category-select">
+      <option value="fe">基本情報技術者</option>
+      <option value="ip">ITパスポート</option>
+      <option value="ap">応用情報技術者</option>
+      <option value="ag">高度情報技術者</option>
+    </select>
+    <button onclick="startGame()">ゲーム開始</button>
   </div>
+
+  <!-- 問題表示エリア -->
+  <div id="question-container" style="display: none;">
+    <p id="question-text"></p> <!-- 問題文表示 -->
+    <div id="choices"></div>   <!-- 選択肢ボタン表示 -->
+  </div>
+
 
   <!-- 合計スコア表示 -->
     <div id="score-display" style="position: fixed; top: 20px; right: 30px; font-size: 2rem; color: white;">
