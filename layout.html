@@ -45,6 +45,12 @@
     <div id="score-change"></div> <!-- 加点をポップ表示 -->
   </div>
 
+  <!-- リザルト表示エリア（非表示で追加） -->
+  <div id="result-area" style="display:none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%); background: rgba(0,0,0,0.95); color: #fff; padding: 40px 60px; border-radius: 16px; text-align: center; z-index: 20000; font-size: 2rem;">
+    <div id="result-message"></div>
+    <button onclick="location.reload()">もう一度挑戦</button>
+  </div>
+
   <!-- 効果音（正解と不正解） -->
   <audio id="correct-sound" src="sounds/クイズ正解5.mp3" preload="auto"></audio> <!-- 正解音声読み込み -->
   <audio id="wrong-sound" src="sounds/クイズ不正解2.mp3" preload="auto"></audio> <!-- 不正解音声読み込み -->

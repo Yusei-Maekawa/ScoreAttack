@@ -7,11 +7,19 @@ let questionStartTime = null;
 let questions = [];
 let currentQuestionIndex = 0;
 
+// テスト時
+const MAX_QUESTIONS = 3;
+
+// 本番時（リリース時はこの値を80に変更）
+/*
+const MAX_QUESTIONS = 80;
+*/
+
 // カテゴリごとのファイルパス
 const categoryFileMap = {
   fe: "questionDatas/questions_fe_sample.json",
   ip: "questionDatas/questions_ip_sample.json",
-  ap: "questionDatas/questions_ap_sample.json",
+  ap: "questionDatas/question_ap.json", // ←ここを修正
   ag: "questionDatas/questions_ag_sample.json"
 };
 
@@ -40,6 +48,11 @@ function updateScoreDisplay() {
 function startQuestion() {
   // 問題がなければ何もしない
   if (!questions.length) return;
+
+  if (currentQuestionIndex >= MAX_QUESTIONS) {
+    endGame();
+    return;
+  }
 
   // ランダムに1問選ぶ（または順番に出したい場合はcurrentQuestionIndexを使う）
   const q = questions[Math.floor(Math.random() * questions.length)];
@@ -232,6 +245,14 @@ function startCountdown(callback) {
       if (typeof callback === 'function') callback();
     }
   }, 1000);
+}
+
+function endGame() {
+  document.getElementById('question-container').style.display = 'none';
+  const resultArea = document.getElementById('result-area');
+  const resultMsg = document.getElementById('result-message');
+  resultMsg.textContent = `ゲーム終了！あなたのスコアは${currentScore}点です`;
+  resultArea.style.display = 'block';
 }
 
 
