@@ -83,7 +83,7 @@
 
 ScoreAttack/
 
-├── index.html # メインHTML
+├── layout.html # メインHTML
 
 ├── style.css # CSSスタイル
 
