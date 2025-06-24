@@ -73,28 +73,38 @@
 |-------------------|---------------------------------------|
 | フロントエンド    | HTML / CSS / JavaScript (Vanilla)     |
 | アニメーション    | CSS / SVG / DOM Animation             |
-| 効果音            | HTML5 `<audio>`                       |
-| 通信処理（予定）  | WebSocket / Firebase / Supabase       |
-| レート計算        | ELO方式 or Glicko2（検討中）         |
+| 効果音            | HTML5 `<audio>`                      |
+| 問題管理   | JSON形式→Go or SQlite へ移行             　　 |
+| バックエンド    | Go（Echoフレームワーク）           　　　 |
+| 通信処理（予定）  | WebSocket(Go実装) / Firebase / Supabase       |
+| レート計算        | ELO方式 or Glicko2（検討中）           |
+| 認証・DB　　　　❘　Firebase Auth / Supabase / SQLite（Go連携）｜
+| その他        | GitHub Actions / GitHub Pages（ホスティング）           |
 
 ---
 
 ## 📁 ディレクトリ構成（予定）
 
 ScoreAttack/
-
-├── layout.html # メインHTML
-
-├── style.css # CSSスタイル
-
-├── script.js # メインJS
-
+├── frontend/
+│   ├── index.html       # メインHTML
+│   ├── style.css        # CSSスタイル
+│   ├── script.js        # メインJS（クイズ・演出制御）
+│   └── sounds/          # 効果音ファイル群
+│
+├── backend-go/          # Go製APIサーバ
+│   ├── main.go          # エントリーポイント
+│   ├── questions.go     # 問題データ管理
+│   ├── handlers.go      # APIハンドラ
+│   └── ...
+│
 ├── data/
+│   └── questions.json   # 問題データ（JSON形式）
+│
+├── assets/              # 画像・演出素材
+│
+├── docs/                # 開発背景・構成説明
+│   └── background.md
+│
+└── README.md            # このファイル
 
-│ └── questions.json # 問題データ
-
-├── sounds/ # 効果音ファイル
-
-├── assets/ # 画像・装飾素材など
-
-├── README.md # このファイル
