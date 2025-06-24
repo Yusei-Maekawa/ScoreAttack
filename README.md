@@ -86,25 +86,41 @@
 ## 📁 ディレクトリ構成（予定）
 
 ScoreAttack/
+
 ├── frontend/
+
 │   ├── index.html       # メインHTML
+
 │   ├── style.css        # CSSスタイル
+
 │   ├── script.js        # メインJS（クイズ・演出制御）
+
 │   └── sounds/          # 効果音ファイル群
+
 │
 ├── backend-go/          # Go製APIサーバ
+
 │   ├── main.go          # エントリーポイント
+
 │   ├── questions.go     # 問題データ管理
+
 │   ├── handlers.go      # APIハンドラ
+
 │   └── ...
+
 │
 ├── data/
 │   └── questions.json   # 問題データ（JSON形式）
+
 │
 ├── assets/              # 画像・演出素材
+
 │
 ├── docs/                # 開発背景・構成説明
+
 │   └── background.md
+
 │
+
 └── README.md            # このファイル
 
